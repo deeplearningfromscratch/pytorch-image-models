@@ -9,7 +9,8 @@ from .config import is_exportable, is_scriptable, is_no_jit
 # PyTorch has an optimized, native 'silu' (aka 'swish') operator as of PyTorch 1.7. This code
 # will use native version if present. Eventually, the custom Swish layers will be removed
 # and only native 'silu' will be used.
-_has_silu = 'silu' in dir(torch.nn.functional)
+# _has_silu = 'silu' in dir(torch.nn.functional)
+_has_silu = False
 
 _ACT_FN_DEFAULT = dict(
     silu=F.silu if _has_silu else swish,
@@ -109,14 +110,14 @@ def get_act_layer(name='relu'):
     Fetching activation layers by name with this function allows export or torch script friendly
     functions to be returned dynamically based on current config.
     """
-    if not name:
-        return None
-    if not (is_no_jit() or is_exportable() or is_scriptable()):
-        if name in _ACT_LAYER_ME:
-            return _ACT_LAYER_ME[name]
-    if not is_no_jit():
-        if name in _ACT_LAYER_JIT:
-            return _ACT_LAYER_JIT[name]
+    # if not name:
+    #     return None
+    # if not (is_no_jit() or is_exportable() or is_scriptable()):
+    #     if name in _ACT_LAYER_ME:
+    #         return _ACT_LAYER_ME[name]
+    # if not is_no_jit():
+    #     if name in _ACT_LAYER_JIT:
+    #         return _ACT_LAYER_JIT[name]
     return _ACT_LAYER_DEFAULT[name]
 
 
