@@ -58,11 +58,27 @@ def IABN2Float(module: nn.Module) -> nn.Module:
     return module
 
 
+# TODO make sure unfolded InPlace-ABN, i.e., BN + Act, has right parameters
 def conv2d_iabn(ni, nf, stride, kernel_size=3, groups=1, act_layer="leaky_relu", act_param=1e-2):
+    if isinstance(act_layer, str):
+        if act_layer == 'elu':
+            act_layer = nn.ELU(alpha=act_param)
+        elif act_layer == 'leaky_relu':
+            act_layer = nn.LeakyReLU(negative_slope=act_param)
+        elif act_layer == 'identity':
+            act_layer = nn.Identity()
+        else:
+            Exception()
+
+    eps = 1e-5
+    momentum = 0.1
+    affine = True
     return nn.Sequential(
         nn.Conv2d(
-            ni, nf, kernel_size=kernel_size, stride=stride, padding=kernel_size // 2, groups=groups, bias=False),
-        InplaceAbn(nf, act_layer=act_layer, act_param=act_param)
+            ni, nf, kernel_size=kernel_size, stride=stride, padding=kernel_size // 2, groups=groups,
+            bias=False),
+        nn.BatchNorm2d(num_features=nf, eps=eps, affine=affine, momentum=momentum),
+        act_layer
     )
 
 
