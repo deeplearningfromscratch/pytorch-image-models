@@ -2,6 +2,23 @@
 
 ## What's New
 
+### Jan 3, 2021
+* Add SE-ResNet-152D weights
+  * 256x256 val, 0.94 crop top-1 - 83.75
+  * 320x320 val, 1.0 crop - 84.36
+* Update [results files](results/)
+
+### Dec 18, 2020
+* Add ResNet-101D, ResNet-152D, and ResNet-200D weights trained @ 256x256
+  * 256x256 val, 0.94 crop (top-1) - 101D (82.33), 152D (83.08), 200D (83.25)
+  * 288x288 val, 1.0 crop - 101D (82.64), 152D (83.48), 200D (83.76)
+  * 320x320 val, 1.0 crop - 101D (83.00), 152D (83.66), 200D (84.01)
+
+### Dec 7, 2020
+* Simplify EMA module (ModelEmaV2), compatible with fully torchscripted models
+* Misc fixes for SiLU ONNX export, default_cfg missing from Feature extraction models, Linear layer w/ AMP + torchscript
+* PyPi release @ 0.3.2 (needed by EfficientDet)
+
 ### Oct 30, 2020
 * Test with PyTorch 1.7 and fix a small top-n metric view vs reshape issue.
 * Convert newly added 224x224 Vision Transformer weights from official JAX repo. 81.8 top-1 for B/16, 83.1 L/16.
@@ -230,7 +247,7 @@ One of the greatest assets of PyTorch is the community and their contributions. 
 
 ### Object Detection, Instance and Semantic Segmentation
 * Detectron2 - https://github.com/facebookresearch/detectron2
-* Segmentation Models (Semantic) - https://github.com/qubvel/segmentation_models.pytorch/issues
+* Segmentation Models (Semantic) - https://github.com/qubvel/segmentation_models.pytorch
 * EfficientDet (Obj Det, Semantic soon) - https://github.com/rwightman/efficientdet-pytorch
 
 ## Licenses
@@ -244,3 +261,22 @@ So far all of the pretrained weights available here are pretrained on ImageNet w
 #### Pretrained on more than ImageNet
 Several weights included or references here were pretrained with proprietary datasets that I do not have access to. These include the Facebook WSL, SSL, SWSL ResNe(Xt) and the Google Noisy Student EfficientNet models. The Facebook models have an explicit non-commercial license (CC-BY-NC 4.0, https://github.com/facebookresearch/semi-supervised-ImageNet1K-models, https://github.com/facebookresearch/WSL-Images). The Google models do not appear to have any restriction beyond the Apache 2.0 license (and ImageNet concerns). In either case, you should contact Facebook or Google with any questions.
 
+## Citing
+
+### BibTeX
+
+```
+@misc{rw2019timm,
+  author = {Ross Wightman},
+  title = {PyTorch Image Models},
+  year = {2019},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  doi = {10.5281/zenodo.4414861},
+  howpublished = {\url{https://github.com/rwightman/pytorch-image-models}}
+}
+```
+
+### Latest DOI
+
+[![DOI](https://zenodo.org/badge/168799526.svg)](https://zenodo.org/badge/latestdoi/168799526)
