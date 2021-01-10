@@ -23,7 +23,7 @@ from .sknet import *
 from .tresnet import *
 from .vision_transformer import *
 from .vovnet import *
-from .xception import *
+from .xception_original import *
 from .xception_aligned import *
 
 from .factory import create_model
