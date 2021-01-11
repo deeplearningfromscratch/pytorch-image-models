@@ -6,9 +6,9 @@ from .efficientnet import *
 from .gluon_resnet import *
 from .gluon_xception import *
 from .hrnet import *
-from .inception_resnet_v2 import *
-from .inception_v3 import *
-from .inception_v4 import *
+from .inception_resnet_v2_module import *
+from .inception_v3_module import *
+from .inception_v4_module import *
 from .mobilenetv3 import *
 from .nasnet import *
 from .pnasnet import *
