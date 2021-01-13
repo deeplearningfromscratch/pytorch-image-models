@@ -81,7 +81,6 @@ class InplaceAbn(nn.Module):
             nn.init.constant_(self.bias, 0)
 
 
-print(InplaceAbn)
 __all__ = ['tresnet_m', 'tresnet_l', 'tresnet_xl']
 
 
