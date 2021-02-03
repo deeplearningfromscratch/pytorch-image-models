@@ -11,11 +11,13 @@ from .inception_v3_module import *
 from .inception_v4_module import *
 from .mobilenetv3 import *
 from .nasnet import *
+from .nfnet import *
 from .pnasnet import *
 from .regnet import *
 from .res2net import *
 from .resnest import *
 from .resnet import *
+from .resnetv2 import *
 from .rexnet import *
 from .selecsls import *
 from .senet import *
